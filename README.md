@@ -16,3 +16,10 @@
 * [HOYA012's RESEARCH BLOG](https://hoya012.github.io/contact/) : Object Detection Tutorials
 * [[Object Tracking] 객체 탐지 및 추적 방법 (1)](https://eehoeskrap.tistory.com/90): Object tracking 기술 설명 및 주의점
 * [객체 검출/물체 인식의 NMS보다 좋은 앙상블 방법, Weighted Boxes Fusion(WBF)](https://lv99.tistory.com/74?category=810681): Weighted Box Fusion(WBF)에 대한 소개
+* [3부. Custom YOLO v3 모델 만들기](https://nero.devstory.co.kr/post/pj-too-real-03/)
+* [다양한 YOLO 버전, 어떤 버전을 선택해야 할까](https://yong0810.tistory.com/30)
+* [YOLO: Unified, Real-Time Object Detection](https://docs.google.com/presentation/d/1aeRvtKG21KHdD5lg6Hgyhx5rPq_ZOsGjG5rJ1HP7BbA/pub?start=false&loop=false&delayms=3000&slide=id.p): YOLO의 동작과정을 그림으로 한 눈에 알아보기 쉽게 정리되어 있음
+* [[Open Source] YOLO v3 윈도우 버전 설치 및 튜토리얼 한방에 정리](https://studyingcoder.blogspot.com/2019/04/open-source-yolo-v3.html)
+* [You Only Look Once — 다.. 단지 한 번만 보았을 뿐이라구!](https://medium.com/curg/you-only-look-once-%EB%8B%A4-%EB%8B%A8%EC%A7%80-%ED%95%9C-%EB%B2%88%EB%A7%8C-%EB%B3%B4%EC%95%98%EC%9D%84-%EB%BF%90%EC%9D%B4%EB%9D%BC%EA%B5%AC-bddc8e6238e2): YOLO의 개념과 네트워크 디자인 소개
+* [YOLO v4 리뷰 : Optimal Speed and Accuracy of Object Detection](https://ropiens.tistory.com/33)
+* [[ML] Object Detection 기초 개념과 성능 측정 방법](https://techblog-history-younghunjo1.tistory.com/178?category=863123)

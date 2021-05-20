@@ -26,4 +26,6 @@
 * [You Only Look Once — 다.. 단지 한 번만 보았을 뿐이라구!](https://medium.com/curg/you-only-look-once-%EB%8B%A4-%EB%8B%A8%EC%A7%80-%ED%95%9C-%EB%B2%88%EB%A7%8C-%EB%B3%B4%EC%95%98%EC%9D%84-%EB%BF%90%EC%9D%B4%EB%9D%BC%EA%B5%AC-bddc8e6238e2): YOLO의 개념과 네트워크 디자인 소개
 * [YOLO v4 리뷰 : Optimal Speed and Accuracy of Object Detection](https://ropiens.tistory.com/33)
 * [[ML] Object Detection 기초 개념과 성능 측정 방법](https://techblog-history-younghunjo1.tistory.com/178?category=863123)
-* 
+* [[9] darknet(YOLOv3) 폴더 및 파일에 대한 간단한 분석](https://developer-thislee.tistory.com/17?category=818795) 
+* [[10] Yolo_mark labeling(라벨링) & 경로 설정](https://developer-thislee.tistory.com/18?category=818795)
+* [[11] YOLOv3 데이터(이미지) 학습하기](https://developer-thislee.tistory.com/19?category=818795)

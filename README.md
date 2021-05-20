@@ -2,6 +2,9 @@
 2021년 1학기 오픈소스SW입문 Term Project
 
 ## 자료 모음
+* [YOLO](https://pjreddie.com/darknet/yolo/) : 여기에서 yolo 여러 버전의 모델과 weights를 다운받을 수 있음.  
+
+
 * [[YOLO] Python과 OpenCV를 이용한 실시간 객체 탐지 알고리즘 구현](https://deep-eye.tistory.com/6)
 * [Python으로 OpenCV를 사용하여 YOLO Object detection](https://bong-sik.tistory.com/16)
 * [[OpenCV Programming] 객체 추적2](https://dsbook.tistory.com/180?category=793748)
@@ -23,3 +26,4 @@
 * [You Only Look Once — 다.. 단지 한 번만 보았을 뿐이라구!](https://medium.com/curg/you-only-look-once-%EB%8B%A4-%EB%8B%A8%EC%A7%80-%ED%95%9C-%EB%B2%88%EB%A7%8C-%EB%B3%B4%EC%95%98%EC%9D%84-%EB%BF%90%EC%9D%B4%EB%9D%BC%EA%B5%AC-bddc8e6238e2): YOLO의 개념과 네트워크 디자인 소개
 * [YOLO v4 리뷰 : Optimal Speed and Accuracy of Object Detection](https://ropiens.tistory.com/33)
 * [[ML] Object Detection 기초 개념과 성능 측정 방법](https://techblog-history-younghunjo1.tistory.com/178?category=863123)
+* 

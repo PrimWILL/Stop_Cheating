@@ -1,6 +1,23 @@
 # Stop_Cheating
 2021년 1학기 오픈소스SW입문 Term Project
 
+1. Download COCO dataset   
+: You can download COCO dataset in [here](https://cocodataset.org/#download).
+But data is so large, so I recommend to download it using this [shell script](https://gist.github.com/mkocabas/a6177fc00315403d31572e17700d7fd9). 
+
+2. Download COCO to YOLO tool  
+: After downloading COCO dataset, you have to convert COCO data to YOLO. 
+You can convert it easy by using [cocotoyolo.jar](https://bitbucket.org/yymoto/coco-to-yolo/src/master/). However, the link is expired, so you can download tool in [here](https://github.com/winston1214/AICT/blob/master/yolov5/cocotoyolo.jar). 
+
+3. Convert COCO to YOLO  
+: Now we have to convert COCO to YOLO using `cocotoyolo.jar`. It's very easy.
+`$ java -jar cocotoyolo.jar "json file path" "img path" "class" "save path"`. For example, 
+```
+$ java -jar cocotoyolo.jar "coco/annotations/instances_train2017.json" "/usr/home/madmax/coco/images/train2017/" "car,truck,bus" "coco/yolo"
+
+$ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/madmax/coco/images/val2017/" "car,truck,bus" "coco/yolo"
+```
+
 ## 자료 모음
 * [YOLO](https://pjreddie.com/darknet/yolo/) : 여기에서 yolo 여러 버전의 모델과 weights를 다운받을 수 있음.  
 
@@ -29,3 +46,6 @@
 * [[9] darknet(YOLOv3) 폴더 및 파일에 대한 간단한 분석](https://developer-thislee.tistory.com/17?category=818795) 
 * [[10] Yolo_mark labeling(라벨링) & 경로 설정](https://developer-thislee.tistory.com/18?category=818795)
 * [[11] YOLOv3 데이터(이미지) 학습하기](https://developer-thislee.tistory.com/19?category=818795)
+* [YOLO v3 윈도우 설치](https://ctkim.tistory.com/81)
+* [Window - YOLO Maker를 이용한 Custom 학습 및 검출](https://ctkim.tistory.com/82)
+* [YOLOv5 - training & test](https://bigdata-analyst.tistory.com/195)

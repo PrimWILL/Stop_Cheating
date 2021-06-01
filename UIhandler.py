@@ -1,8 +1,11 @@
+import cv2
+
 from UIsource.Loginpage import Login_Page
 from UIsource.Mainpage import Main_Page
 from UIsource.WebCamTest import Webcam_Page
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+
 
 class UIHandler:
     def __init__(self):
@@ -21,6 +24,8 @@ class UIHandler:
         self.LoginForm.show()
 
     def show_main_page(self):
+        self.main_page.SID = self.login_page.SID
+        self.main_page.Name = self.login_page.Name
         self.LoginForm.close()
         self.WebcamForm.close()
         self.main_page.setupUi(self.MainForm)

@@ -1,6 +1,6 @@
 # Stop_Cheating
 2021년 1학기 오픈소스SW입문 Term Project : *OpenCV를 활용한 온라인 시험 컨닝 방지 시스템*  
-Member: [PrimWILL](https://github.com/PrimWILL), [Myungkwan Ok](https://github.com/canonn11), [donghyun1208](donghyun1208)
+Member: [PrimWILL](https://github.com/PrimWILL), [Myungkwan Ok](https://github.com/canonn11), [donghyun1208](https://github.com/donghyun1208)
 <br/>
 <br/>
 
@@ -31,13 +31,16 @@ $ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/
 : After download Yolo Mark, please execute `yolo_mark.sln` in Yolo_mark folder. If you don't have MSVC, then please download [MSVC](https://visualstudio.microsoft.com/ko/downloads/) to open the sln file.  
 
 3. Set preferences  
-: There are something to change preferences. First, change build environment default into `Release/x64`. Open the project property pages. In `C/C++ -> General -> Additional Include Directories`, modify OpenCV path. You can download OpenCV in [here](https://opencv.org/releases/). Also, in `Linker->General->Additional Include Directories`, modify link path.  
+: There are something to change preferences. First, change build environment default into `Release/x64`. Open the project property pages. In `C/C++ -> General -> Additional Include Directories`, modify OpenCV path. You can download OpenCV in [here](https://opencv.org/releases/). Also, in `Linker -> General -> Additional Include Directories`, modify link path.  
 
 4. Build project  
-: Build yolo_mark project. If you set preferences properly, then it build successfully.  
+: Build yolo_mark project. If you set preferences properly, then it builds successfully.  
 
 5. Execute yolo_mark.cmd  
-: If you built project successfully, then execute `yolo_mark.cmd` in `Yolo_mark->x64->Release` folder.  
+: If you built project successfully, then execute `yolo_mark.cmd` in `Yolo_mark -> x64 -> Release` folder.  
+
+## How to make custom Yolo dataset  
+1. 
 
 
 ## 자료 모음

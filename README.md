@@ -1,5 +1,39 @@
-# Stop_Cheating
-2021년 1학기 오픈소스SW입문 Term Project
+# :computer: Stop_Cheating
+>2021년 1학기 오픈소스SW입문 Term Project : *OpenCV를 활용한 온라인 시험 컨닝 방지 시스템*  
+<br/>
+
+## :loudspeaker:프로젝트 소개
+비대면 시험 중 컨닝 문제를 해결하기 위해 실시간 영상처리를 통해 부정행위를 검출하는 시스템입니다.
+
+## :wrench:Features
+1. 실시간 영상 처리를 통한 부정행위 검출
+
+
+2.
+
+
+3.
+
+
+
+## :books:Techs
+
+  ### [OpenCV - Python](https://github.com/opencv/opencv)
+  - 실시간 영상 처리 및 입출력를 위해서 OpenCV Python 라이브러리를 사용하였습니다.
+  ### [Yolo v3](https://github.com/ultralytics/yolov3) 
+  - 핵심 기능인 Object Detection의 정확도를 위해서 딥러닝 프레임워크인 Yolo v3을 채용하였습니다. 
+  - 호환성 및 성능(속도, 정확도), 안정성을 고려하여 v3버전을 사용하였고, 커스텀 모델 학습을 통해 성능 향상 및 핵심 기능을 구현하였습니다.
+  ### [PyQT5](https://pypi.org/project/PyQt5/) 
+  - OpenCV 라이브러리와의 호환성을 고려하여 핵심 UI 구현 프레임워크로 PyQT5를 사용하였습니다.
+## :two_men_holding_hands:Members
+```
+[@PrimWILL](https://github.com/PrimWILL)
+[@Myungkwan Ok](https://github.com/canonn11)
+[@donghyun1208](https://github.com/donghyun1208)
+```
+----------------------------------------------------
+
+## How to use COCO dataset
 
 1. Download COCO dataset   
 : You can download COCO dataset in [here](https://cocodataset.org/#download).
@@ -17,6 +51,26 @@ $ java -jar cocotoyolo.jar "coco/annotations/instances_train2017.json" "/usr/hom
 
 $ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/madmax/coco/images/val2017/" "car,truck,bus" "coco/yolo"
 ```
+
+## How to install Yolo Mark
+1. Download labeling tool.  
+: If you want to use custom dataset, you should mark bounded boxes of the object in your custom image. There's [Yolo Mark](https://github.com/AlexeyAB/Yolo_mark) which is marking bounded boxes of objects in images for training Yolo v3 and v2.  
+
+2. Execute yolo_mark.sln  
+: After download Yolo Mark, please execute `yolo_mark.sln` in Yolo_mark folder. If you don't have MSVC, then please download [MSVC](https://visualstudio.microsoft.com/ko/downloads/) to open the sln file.  
+
+3. Set preferences  
+: There are something to change preferences. First, change build environment default into `Release/x64`. Open the project property pages. In `C/C++ -> General -> Additional Include Directories`, modify OpenCV path. You can download OpenCV in [here](https://opencv.org/releases/). Also, in `Linker -> General -> Additional Include Directories`, modify link path.  
+
+4. Build project  
+: Build yolo_mark project. If you set preferences properly, then it builds successfully.  
+
+5. Execute yolo_mark.cmd  
+: If you built project successfully, then execute `yolo_mark.cmd` in `Yolo_mark -> x64 -> Release` folder.  
+
+## How to make custom Yolo dataset  
+1. 
+
 
 ## 자료 모음
 * [YOLO](https://pjreddie.com/darknet/yolo/) : 여기에서 yolo 여러 버전의 모델과 weights를 다운받을 수 있음.  

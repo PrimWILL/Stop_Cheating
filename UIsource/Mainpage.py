@@ -7,6 +7,7 @@ import sys,datetime
 
 class Main_Page(QWidget):
     switch_window_to_webcam = QtCore.pyqtSignal()
+    switch_windows_to_exam = QtCore.pyqtSignal()
 
     def setupUi(self, MainForm):
         MainForm.setObjectName("MainForm")
@@ -14,10 +15,10 @@ class Main_Page(QWidget):
 
         #label : label for Student info
         self.label = QtWidgets.QLabel(MainForm)
-        self.label.setGeometry(QtCore.QRect(30, 10, 211, 81))
+        self.label.setGeometry(QtCore.QRect(20, 30, 211, 81))
         font = QtGui.QFont()
         font.setFamily("맑은 고딕")
-        font.setPointSize(22)
+        font.setPointSize(28)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
@@ -36,7 +37,7 @@ class Main_Page(QWidget):
 
         #label_3 : label for name
         self.label_3 = QtWidgets.QLabel(MainForm)
-        self.label_3.setGeometry(QtCore.QRect(60, 210, 321, 41))
+        self.label_3.setGeometry(QtCore.QRect(60, 190, 321, 41))
         font = QtGui.QFont()
         font.setFamily("맑은 고딕")
         font.setPointSize(16)
@@ -47,7 +48,7 @@ class Main_Page(QWidget):
 
         #button for webcam test page
         self.WebcamTestButton = QtWidgets.QPushButton(MainForm)
-        self.WebcamTestButton.setGeometry(QtCore.QRect(400, 70, 161, 101))
+        self.WebcamTestButton.setGeometry(QtCore.QRect(380, 90, 181, 111))
         font = QtGui.QFont()
         font.setFamily("맑은 고딕")
         font.setPointSize(18)
@@ -62,7 +63,7 @@ class Main_Page(QWidget):
 
         #test start button
         self.TestStartButton = QtWidgets.QPushButton(MainForm)
-        self.TestStartButton.setGeometry(QtCore.QRect(400, 230, 161, 101))
+        self.TestStartButton.setGeometry(QtCore.QRect(380, 260, 181, 111))
         font = QtGui.QFont()
         font.setFamily("맑은 고딕")
         font.setPointSize(18)
@@ -73,6 +74,7 @@ class Main_Page(QWidget):
                                            "color : rgb(0, 0, 0);\n"
                                            "border-radius : 15px;")
         self.TestStartButton.setObjectName("TestStartButton")
+        self.TestStartButton.clicked.connect(self.switch_exam_page)
 
         self.retranslateUi(MainForm)
         QtCore.QMetaObject.connectSlotsByName(MainForm)
@@ -87,10 +89,10 @@ class Main_Page(QWidget):
 
         #label_4 : Current time label
         self.label_4 = QtWidgets.QLabel(MainForm)
-        self.label_4.setGeometry(QtCore.QRect(320, 0, 291, 41))
+        self.label_4.setGeometry(QtCore.QRect(310, 0, 301, 41))
         font = QtGui.QFont()
         font.setFamily("맑은 고딕")
-        font.setPointSize(16)
+        font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
@@ -122,6 +124,9 @@ class Main_Page(QWidget):
     #function for switching page
     def switch_webcam_page(self):
         self.switch_window_to_webcam.emit()
+
+    def switch_exam_page(self):
+        self.switch_windows_to_exam.emit()
 
     #function for updating current time for timer
     def timeout_run(self):

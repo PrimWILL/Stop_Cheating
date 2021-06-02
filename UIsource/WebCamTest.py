@@ -11,17 +11,16 @@ import qimage2ndarray
 
 class Webcam_Page(QWidget):
     switch_window_to_main = QtCore.pyqtSignal()
-    cap = cv2.VideoCapture(0)
-    label = None
+    VideoSignal = cv2.VideoCapture(0)
     timer = QTimer()
 
     #displayFrame, start_timer , stop_timer : functions for getting image from webcam and update in real time
     def displayFrame(self):
-        ret, frame = self.cap.read()
+        ret, frame = self.VideoSignal.read()
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         image = qimage2ndarray.array2qimage(frame)
-        self.label.setPixmap(QPixmap(image))
-        self.label.setScaledContents(True)
+        self.camlabel.setPixmap(QPixmap(image))
+        self.camlabel.setScaledContents(True)
 
     def start_timer(self):
         self.timer.timeout.connect(self.displayFrame)
@@ -63,11 +62,11 @@ class Webcam_Page(QWidget):
 
 
         #label for camera image
-        self.label = QtWidgets.QLabel(WebcamForm)
-        self.label.setGeometry(QtCore.QRect(3, 1, 611, 381))
-        self.label.setPixmap(QtGui.QPixmap("UIsource/imgsource/cam.jpg"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
+        self.camlabel = QtWidgets.QLabel(WebcamForm)
+        self.camlabel.setGeometry(QtCore.QRect(-7, 1, 621, 381))
+        self.camlabel.setPixmap(QtGui.QPixmap("UIsource/imgsource/cam.jpg"))
+        self.camlabel.setScaledContents(True)
+        self.camlabel.setObjectName("label")
 
         self.retranslateUi(WebcamForm)
         QtCore.QMetaObject.connectSlotsByName(WebcamForm)
@@ -82,7 +81,7 @@ class Webcam_Page(QWidget):
     # function for switching page
     def switch_main_page(self):
         self.stop_timer()
-        self.cap.release()
+        self.VideoSignal.release()
         self.switch_window_to_main.emit()
 
 

@@ -1,3 +1,8 @@
+"""
+This Code is only for test and it doesn't work. this code moved to ./UIsource/Exampage.py
+"""
+
+
 import cv2
 import datetime
 import numpy as np
@@ -47,7 +52,9 @@ class control:
 
             for out in outs:
 
+
                 for detection in out:
+
 
                     scores = detection[5:]
                     class_id = np.argmax(scores)
@@ -79,7 +86,7 @@ class control:
                     # bounding box와 confidence score 표시
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 5)
                     cv2.putText(frame, label + str(score), (x, y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
-
+            print(3)
             cv2.imshow("Webcam", frame)
 
             self.keyControl()

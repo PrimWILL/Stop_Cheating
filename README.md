@@ -1,8 +1,37 @@
-# Stop_Cheating
-2021년 1학기 오픈소스SW입문 Term Project : *OpenCV를 활용한 온라인 시험 컨닝 방지 시스템*  
-Member: [PrimWILL](https://github.com/PrimWILL), [Myungkwan Ok](https://github.com/canonn11), [donghyun1208](https://github.com/donghyun1208)
+# :computer: Stop_Cheating
+>2021년 1학기 오픈소스SW입문 Term Project : *OpenCV를 활용한 온라인 시험 컨닝 방지 시스템*  
 <br/>
-<br/>
+
+## :loudspeaker: 프로젝트 소개
+비대면 시험 중 컨닝 문제를 해결하기 위해 실시간 영상처리를 통해 부정행위를 검출하는 시스템입니다.
+
+## :wrench: Features
+1. 실시간 영상 처리를 통한 부정행위 검출
+
+
+2.
+
+
+3.
+
+
+
+## :books: Techs
+
+  ### [OpenCV - Python](https://github.com/opencv/opencv)
+  - 실시간 영상 처리 및 입출력를 위해서 OpenCV Python 라이브러리를 사용하였습니다.
+  ### [Yolo v3](https://github.com/ultralytics/yolov3) 
+  - 핵심 기능인 Object Detection의 정확도를 위해서 딥러닝 프레임워크인 Yolo v3을 채용하였습니다. 
+  - 호환성 및 성능(속도, 정확도), 안정성을 고려하여 v3버전을 사용하였고, 커스텀 모델 학습을 통해 성능 향상 및 핵심 기능을 구현하였습니다.
+  ### [PyQT5](https://pypi.org/project/PyQt5/) 
+  - OpenCV 라이브러리와의 호환성을 고려하여 핵심 UI 구현 프레임워크로 PyQT5를 사용하였습니다.
+## :two_men_holding_hands: Members
+
+[@PrimWILL](https://github.com/PrimWILL)  
+[@Myungkwan Ok](https://github.com/canonn11)  
+[@donghyun1208](https://github.com/donghyun1208)
+
+----------------------------------------------------
 
 ## How to use COCO dataset
 
@@ -39,8 +68,30 @@ $ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/
 5. Execute yolo_mark.cmd  
 : If you built project successfully, then execute `yolo_mark.cmd` in `Yolo_mark -> x64 -> Release` folder.  
 
+
 ## How to make custom Yolo dataset  
-1. 
+1. Change working directory  
+: First, you change your working directory into `Yolo_mark -> x64 -> Release -> data -> img`.  
+
+2. Delete sample file.  
+: If you use yolo_mark at first, then there are some sample files. Delete all the sample *.jpg and *.txt file.  
+
+3. Put images  
+: Put your images which you want to make custom Yolo dataset in this folder.  
+
+4. Execute obj.names  
+: Move to the parent directory. Then execute `obj.names` file. If you can't open this file, then change the name of extension; `names` -> `txt`.  
+
+5. Modify obj.names  
+: `obj.names` is a file which defines names of classes. Hence, please put the names of classes which you want to detect objects. If you change the extension in step 4, then change extension into original: `names`.  
+
+6. Execute yolo_mark.cmd  
+: Back to the parent directory. Then, execute `yolo_mark.cmd`.
+
+7. Mark bounded boxes  
+: Mark bounded boxes of the object in your custom image. You can see help using shortcut `h`.
+
+<br/>
 
 
 ## 자료 모음

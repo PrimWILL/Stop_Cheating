@@ -1,3 +1,8 @@
+"""
+This Code is only for test and it doesn't work. this code moved to ./UIsource/Exampage.py
+"""
+
+
 import cv2
 import datetime
 import numpy as np
@@ -24,7 +29,7 @@ class control:
 
 
     def object_detector(self):
-        YOLO_net = cv2.dnn.readNet("yolov3-tiny.weights", "yolov3-tiny.cfg")
+        YOLO_net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
 
         classes = []
         with open("coco.names", "r") as f:
@@ -47,7 +52,9 @@ class control:
 
             for out in outs:
 
+
                 for detection in out:
+
 
                     scores = detection[5:]
                     class_id = np.argmax(scores)
@@ -76,10 +83,10 @@ class control:
                     label = str(classes[class_ids[i]])
                     score = confidences[i]
 
-                    # 경계상자와 클래스 정보 투영
+                    # bounding box와 confidence score 표시
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 5)
                     cv2.putText(frame, label + str(score), (x, y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
-
+            print(3)
             cv2.imshow("Webcam", frame)
 
             self.keyControl()

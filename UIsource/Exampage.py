@@ -13,6 +13,8 @@ class Exam_Page(QWidget):
     switch_window_to_main = QtCore.pyqtSignal()
     VideoSignal = cv2.VideoCapture(0)
     timer = QTimer()
+    count_person = 0
+    count_time = 0
 
     def displayFrame(self):
         ret, frame = self.VideoSignal.read()
@@ -58,9 +60,25 @@ class Exam_Page(QWidget):
                 label = str(self.classes[class_ids[i]])
                 score = confidences[i]
 
+                # 만약에 label이 person이라면, person 수에 추가
+                if label == 'person':
+                    self.count_person += 1
+
                 # bounding box와 confidence score 표시
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 5)
                 cv2.putText(frame, label + str(score), (x, y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
+
+        print(self.count_person)
+        # 만약 이번 VideoCapture에서 사람이 2명 이상이라면, 시간에 추가
+        if self.count_person > 1:
+            self.count_time += 1
+        self.count_person = 0
+
+        # 만약 2명 이상 감지된 시간이 3초 이상이라면, capture
+        if self.count_time > 50:
+            self.save_picture()
+            self.count_time = 0
+
         #Pyqt Label에 bounding box포함해 전처리한 프레임 입력
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         image = qimage2ndarray.array2qimage(frame)

@@ -9,6 +9,7 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QThread
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from kakaotalk.kakao import Kakaotalk
+from PIL import ImageGrab
 import qimage2ndarray
 
 class Exam_Page(QWidget):
@@ -159,17 +160,24 @@ class Exam_Page(QWidget):
             hour = now.strftime('%H%M%S')
             filename = './images/Test_{}_{}_{}_{}.png'.format(self.SID, self.Name, date, hour)
 
-            # opencv가 한글을 지원하지 않아 학생명이 한글이면 저장이 안 되는 에러 해결
-            extension = os.path.splitext(filename)[1]
-            result, n = cv2.imencode(extension, img, None)
-            if result:
-                with open(filename, mode='w+b') as f:
-                    n.tofile(f)
+            self.ko2Uni_save(filename, img)
             # self.imwrite(filename, img)
+
+            # 스크린 샷도 찍어서 저장
+            Screen_filename = './images/Screenshot_{}_{}_{}_{}.png'.format(self.SID, self.Name, date, hour)
+            screen_img=ImageGrab.grab()
+            screen_img.save(Screen_filename)
 
             # 카카오톡으로 부정행위가 의심되니 캡처된 사진을 확인해줄 것을 메세지로 전송
             kakao = Kakaotalk()
             kakao.send_message(self.SID, self.Name)
+
+    def ko2Uni_save(self, filename, img):
+        extension = os.path.splitext(filename)[1]
+        result, n = cv2.imencode(extension, img, None)
+        if result:
+            with open(filename, mode='w+b') as f:
+                n.tofile(f)
 
     # 키 입력 이벤트를 받아 사진 저장하는 임시 함수. 조건 구현 되면 CheatingDetected으로 이동
     def keyPressEvent(self, e):

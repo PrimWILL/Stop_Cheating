@@ -161,7 +161,7 @@ class Exam_Page(QWidget):
 
             # 카카오톡으로 부정행위가 의심되니 캡처된 사진을 확인해줄 것을 메세지로 전송
             kakao = Kakaotalk()
-            kakao.send_message()
+            kakao.send_message(self.SID, self.Name)
 
     # 키 입력 이벤트를 받아 사진 저장하는 임시 함수. 조건 구현 되면 CheatingDetected으로 이동
     def keyPressEvent(self, e):

@@ -36,25 +36,14 @@ class Kakaotalk():
 
         cheating_message = "{0} {1} 학생의 부정행위가 의심됩니다. 확인해주세요.".format(a, b)
 
-        # 카카오톡 측에서 로컬에 저장된 이미지는 카카오톡 메세지로 저장하는 기능을 제공하지 않고 있음
-        # 만약 kakao api를 통해 메세지를 보낸다면, 1. 웹 서버에 사진을 저장하거나 / 2. 텍스트만 전송
-        # 만약 text만 전송한다면, feed message 대신 text message가 나을까?
-        template = {
-            "object_type": "feed",
-            "content":
-                {
-                    "title": "Stop_Cheating",
-                    "description": cheating_message,
-                    "image_url": "https://image.shutterstock.com/image-photo/cheating-on-test-young-bearded-600w-270696500.jpg",
-                    "link": {
-                        "web_url": "www.naver.com",
-                        "mobile_web_url": "www.naver.com"
-                    }
-                }
-        }
-
         data = {
-            "template_object": json.dumps(template)
+            "template_object": json.dumps({
+                "object_type": "text",
+                "text": cheating_message,
+                "link": {
+                    "web_url": "www.naver.com"
+                }
+            })
         }
 
         response = requests.post(url, headers=headers, data=data)

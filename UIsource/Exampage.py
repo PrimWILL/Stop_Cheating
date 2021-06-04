@@ -1,4 +1,5 @@
 import cv2
+import os
 import sys
 import datetime
 import numpy as np
@@ -157,7 +158,14 @@ class Exam_Page(QWidget):
             date = now.strftime('%Y%m%d')
             hour = now.strftime('%H%M%S')
             filename = './images/Test_{}_{}_{}_{}.png'.format(self.SID, self.Name, date, hour)
-            cv2.imwrite(filename, img)
+
+            # opencv가 한글을 지원하지 않아 학생명이 한글이면 저장이 안 되는 에러 해결
+            extension = os.path.splitext(filename)[1]
+            result, n = cv2.imencode(extension, img, None)
+            if result:
+                with open(filename, mode='w+b') as f:
+                    n.tofile(f)
+            # self.imwrite(filename, img)
 
             # 카카오톡으로 부정행위가 의심되니 캡처된 사진을 확인해줄 것을 메세지로 전송
             kakao = Kakaotalk()

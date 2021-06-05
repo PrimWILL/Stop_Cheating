@@ -24,7 +24,7 @@ class Kakaotalk():
         with open("kakao_code.json", "w") as fp:
             json.dump(tokens, fp)
 
-    def send_message(self, a, b):
+    def send_message(self, a, b, date, hour):
         with open("kakaotalk/kakao_code.json", "r") as fp:
             tokens = json.load(fp)
 
@@ -34,7 +34,7 @@ class Kakaotalk():
             "Authorization": "Bearer " + tokens["access_token"]
         }
 
-        cheating_message = "{0} {1} 학생의 부정행위가 의심됩니다. 확인해주세요.".format(a, b)
+        cheating_message = "{0} {1} 학생의 부정행위가 의심됩니다. 확인해주세요. 일시: {2}_{3}".format(a, b, date, hour)
 
         data = {
             "template_object": json.dumps({

@@ -17,10 +17,11 @@ class Exam_Page(QWidget):
     VideoSignal = cv2.VideoCapture(0)
     timer = QTimer()
     count_person = 0
-    count_time = 0
+    start_time = 0
 
     def displayFrame(self):
         ret, frame = self.VideoSignal.read()
+        hour = datetime.datetime.now()
         h, w, c = frame.shape
 
         #웹캠에서 프레임 입력받아 전처리
@@ -75,14 +76,17 @@ class Exam_Page(QWidget):
         print(self.count_person)
 
         # 만약 이번 VideoCapture에서 사람이 2명 이상이라면, 시간에 추가
-        if self.count_person > 1:
-            self.count_time += 1
-        self.count_person = 0
-
         # 만약 2명 이상 감지된 시간이 3초 이상이라면, capture
-        if self.count_time > 50:
-            self.save_picture()
-            self.count_time = 0
+        if self.count_person > 1:
+            if self.start_time == 0:
+                self.start_time = datetime.datetime.now()
+            else:
+                if (hour - self.start_time) >= datetime.timedelta(seconds=3):
+                    self.save_picture()
+                    self.start_time = 0
+        else:
+            self.start_time = 0
+        self.count_person = 0
 
         #Pyqt Label에 bounding box포함해 전처리한 프레임 입력
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

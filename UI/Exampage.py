@@ -20,9 +20,9 @@ class Exam_Page(QWidget):
     show_alert_page_4 = QtCore.pyqtSignal()
     VideoSignal = cv2.VideoCapture(0)
     timer = QTimer()
-    start_time = 0
 
     count_person1 = 0
+    count_person2 = 0
     count_cellphone = 0
     count_paper = 0
     count_time_alert1 = 0
@@ -78,6 +78,7 @@ class Exam_Page(QWidget):
                 # 만약에 label이 person이라면, person 수에 추가
                 if label == 'person':
                     self.count_person1 += 1
+                    self.count_person2 += 1
                 if label == 'cell phone':
                     self.count_cellphone +=1
                 if label == 'paper':
@@ -88,61 +89,65 @@ class Exam_Page(QWidget):
                 # bounding box와 confidence score 표시
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 5)
                 cv2.putText(frame, label + str(score), (x, y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
-        #alert3 : no person
-        if(self.count_person1 == 0):
-            self.count_time_alert3 +=1
-            print("alert3 count : no person" + str(self.count_time_alert3))
-        #alert4 = no paper
-        if(self.count_paper == 0):
-            self.count_time_alert4 +=1
-            print("alert4 count : no paper" + str(self.count_time_alert4))
 
-        # alert1 : more than 1 person
+
+        #alert1 : more than 1 person
         if self.count_person1 > 1:
-            self.count_time_alert1 += 1
-            print("alert1 count : more than 1 person" + str(self.count_time_alert1))
-        self.count_person1 = 0
-
-        if self.count_time_alert1 > 10:
-            self.save_picture()
-            self.show_alert_page_1.emit()
+            if self.count_time_alert1 == 0:
+                self.count_time_alert1 = datetime.datetime.now()
+                #print("alert1 count : more than 1 person" + str(self.count_time_alert1))
+            else:
+                if (hour - self.count_time_alert1) >= datetime.timedelta(seconds=3):
+                    self.save_picture()
+                    self.show_alert_page_1.emit()
+                    self.count_time_alert1 = 0
+        else:
             self.count_time_alert1 = 0
+        self.count_person1 = 0
 
         # alert2 : cellphone
         if self.count_cellphone > 0:
-            self.count_time_alert2 += 1
-            print("alert2 count : cellphone" + str(self.count_time_alert2))
+            if self.count_time_alert2 == 0:
+                self.count_time_alert2 = datetime.datetime.now()
+                #print("alert2 count : cellphone" + str(self.count_time_alert2))
+            else:
+                if (hour - self.count_time_alert2) >= datetime.timedelta(seconds=3):
+                    self.save_picture()
+                    self.show_alert_page_2.emit()
+                    self.count_time_alert2 = 0
+        else:
+            self.count_time_alert2 = 0
         self.count_cellphone = 0
 
-        if self.count_time_alert2 > 10:
-            self.save_picture()
-            self.show_alert_page_2.emit()
-            self.count_time_alert2 = 0
 
-        # 만약 이번 VideoCapture에서 사람이 2명 이상이라면, 시간에 추가
-        # 만약 2명 이상 감지된 시간이 3초 이상이라면, capture
-        if self.count_person > 1:
-            if self.start_time == 0:
-                self.start_time = datetime.datetime.now()
+        # alert3 : no person
+        if self.count_person2 == 0:
+            if self.count_time_alert3 == 0:
+                self.count_time_alert3 = datetime.datetime.now()
+                #print("alert3 count : no person" + str(self.count_time_alert3))
             else:
-                if (hour - self.start_time) >= datetime.timedelta(seconds=3):
+                if (hour - self.count_time_alert3) >= datetime.timedelta(seconds=3):
                     self.save_picture()
-                    self.start_time = 0
+                    self.show_alert_page_3.emit()
+                    self.count_time_alert3 = 0
         else:
-            self.start_time = 0
-        self.count_person = 0
+            self.count_time_alert3 = 0
+        self.count_person2 = 0
 
-        #alert3 : no person
-        if self.count_time_alert3 > 10:
-            self.save_picture()
-            self.show_alert_page_3.emit()
-            self.count_time_alert3=0
+        # alert4 : no paper
+        if self.count_paper == 0:
+            if self.count_time_alert4 == 0:
+                self.count_time_alert4 = datetime.datetime.now()
+                #print("alert4 count : no paper" + str(self.count_time_alert4))
+            else:
+                if (hour - self.count_time_alert4) >= datetime.timedelta(seconds=3):
+                    self.save_picture()
+                    self.show_alert_page_4.emit()
+                    self.count_time_alert4 = 0
+        else:
+            self.count_time_alert4 = 0
+        self.count_paper = 0
 
-        #alert4 : no paper
-        if self.count_time_alert4 > 5:
-            self.save_picture()
-            self.show_alert_page_4.emit()
-            self.count_time_alert4=0
 
         #Pyqt Label에 bounding box포함해 전처리한 프레임 입력
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

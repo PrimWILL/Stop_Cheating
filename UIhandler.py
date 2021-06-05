@@ -68,7 +68,7 @@ class UIHandler:
         alert1 = QMessageBox()
         alert1.setIcon(QMessageBox.Warning)
         alert1.setText("부정행위가 감지되었습니다.")
-        alert1.setWindowTitle("ALERT")
+        alert1.setWindowTitle("경고")
         alert1.setInformativeText('사유 : 사람이 2명 이상 감지되었습니다.')
         alert1.exec_()
 
@@ -76,7 +76,7 @@ class UIHandler:
         alert2 = QMessageBox()
         alert2.setIcon(QMessageBox.Warning)
         alert2.setText("부정행위가 감지되었습니다.")
-        alert2.setWindowTitle("ALERT")
+        alert2.setWindowTitle("경고")
         alert2.setInformativeText('사유 : 휴대폰이 검출되었습니다.')
         alert2.exec_()
 
@@ -84,7 +84,7 @@ class UIHandler:
         alert3 = QMessageBox()
         alert3.setIcon(QMessageBox.Warning)
         alert3.setText("부정행위가 감지되었습니다.")
-        alert3.setWindowTitle("ALERT")
+        alert3.setWindowTitle("경고")
         alert3.setInformativeText('사유 : 응시자가 자리를 이탈했습니다.')
         alert3.exec_()
 
@@ -92,6 +92,6 @@ class UIHandler:
         alert4 = QMessageBox()
         alert4.setIcon(QMessageBox.Warning)
         alert4.setText("부정행위가 감지되었습니다.")
-        alert4.setWindowTitle("ALERT")
+        alert4.setWindowTitle("경고")
         alert4.setInformativeText('사유 : 시험지,답안지가 화면에 잡히지 않습니다.')
         alert4.exec_()

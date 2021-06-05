@@ -29,8 +29,8 @@
 
 
 ## :camera: Screenshot
-<img src="./UI/imgsource/Screenshot-01.jpg">
-<img src="./UI/imgsource/Screenshot-02.jpg">
+<img src="./UI/imgsource/Screenshot-01.JPG">
+<img src="./UI/imgsource/Screenshot-02.JPG">
 
 ## :books: Techs
 

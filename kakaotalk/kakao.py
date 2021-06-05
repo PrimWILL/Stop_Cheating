@@ -4,26 +4,6 @@ import json
 
 class Kakaotalk():
 
-    def kakao_login(self):
-        url = 'https://kauth.kakao.com/oauth/token'
-        rest_api_key = 'e4ec918cd4f0c0110c7ea1de7face491'
-        redirect_uri = 'https://example.com/oauth'
-        authorize_code = "" # 보안상 삭제
-
-        data = {
-            'grant_type': 'authorization_code',
-            'client_id': rest_api_key,
-            'redirect_uri': redirect_uri,
-            'code': authorize_code,
-        }
-
-        response = requests.post(url, data=data)
-        tokens = response.json()
-        print(tokens)
-
-        with open("kakao_code.json", "w") as fp:
-            json.dump(tokens, fp)
-
     def send_message(self, a, b, date, hour, cheating_code):
         with open("kakaotalk/kakao_code.json", "r") as fp:
             tokens = json.load(fp)

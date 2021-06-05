@@ -10,9 +10,13 @@
 ### 부정행위 검출
 - 웹캠으로부터 입력을 받아 시스템이 부정행위 여부를 판별하여 알림메세지를 출력합니다  
 부정행위로 판별되는 경우는 다음과 같습니다.
-1.  2명 이상의 사람이 같이 있는 경우  
+1.  2명 이상의 사람이 캠 화면에 잡힌 경우
    <br/>
-2.  
+2.  캠 화면에 휴대폰이 잡힌 경우
+   <br/>
+3.  응시자가 자리를 비운 경우
+   <br/>
+4. 답안지 혹은 시험지가 캠 화면에 잡히지 않는 경우
    <br/>
 
 
@@ -25,8 +29,8 @@
 
 
 ## :camera: Screenshot
-to be added soon
-
+<img src="./UI/imgsource/Screenshot-01.jpg">
+<img src="./UI/imgsource/Screenshot-02.jpg">
 
 ## :books: Techs
 

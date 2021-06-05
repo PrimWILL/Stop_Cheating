@@ -117,7 +117,6 @@ class Exam_Page(QWidget):
             self.count_time_alert2 = 0
         self.count_cellphone = 0
 
-
         # alert3 : no person
         if self.count_person2 == 0:
             if self.count_time_alert3 == 0:
@@ -230,8 +229,8 @@ class Exam_Page(QWidget):
             screen_img.save(Screen_filename)
 
             # 카카오톡으로 부정행위가 의심되니 캡처된 사진을 확인해줄 것을 메세지로 전송
-            kakao = Kakaotalk()
-            kakao.send_message(self.SID, self.Name, date, hour, cheating_code)
+            # kakao = Kakaotalk()
+            # kakao.send_message(self.SID, self.Name, date, hour, cheating_code)
 
     def ko2Uni_save(self, filename, img):
         extension = os.path.splitext(filename)[1]

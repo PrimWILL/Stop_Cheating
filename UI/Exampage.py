@@ -14,10 +14,19 @@ import qimage2ndarray
 
 class Exam_Page(QWidget):
     switch_window_to_main = QtCore.pyqtSignal()
+    show_alert_page_1 = QtCore.pyqtSignal()
+    show_alert_page_2 = QtCore.pyqtSignal()
+    show_alert_page_3 = QtCore.pyqtSignal()
+    show_alert_page_4 = QtCore.pyqtSignal()
     VideoSignal = cv2.VideoCapture(0)
     timer = QTimer()
-    count_person = 0
-    count_time = 0
+    count_person1 = 0
+    count_cellphone = 0
+    count_paper = 0
+    count_time_alert1 = 0
+    count_time_alert2 = 0
+    count_time_alert3 = 0
+    count_time_alert4 = 0
 
     def displayFrame(self):
         ret, frame = self.VideoSignal.read()
@@ -65,24 +74,62 @@ class Exam_Page(QWidget):
 
                 # 만약에 label이 person이라면, person 수에 추가
                 if label == 'person':
-                    self.count_person += 1
+                    self.count_person1 += 1
+                if label == 'cell phone':
+                    self.count_cellphone +=1
+                if label == 'paper':
+                    self.count_paper +=1
+
+
 
                 # bounding box와 confidence score 표시
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 5)
                 cv2.putText(frame, label + str(score), (x, y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
+        #alert3 : no person
+        if(self.count_person1 == 0):
+            self.count_time_alert3 +=1
+            print("alert3 count : no person" + str(self.count_time_alert3))
+        #alert4 = no paper
+        if(self.count_paper == 0):
+            self.count_time_alert4 +=1
+            print("alert4 count : no paper" + str(self.count_time_alert4))
 
-        # 사람 몇 명 찍히는지 console로 출력. 추후 삭제
-        print(self.count_person)
+        # alert1 : more than 1 person
+        if self.count_person1 > 1:
+            self.count_time_alert1 += 1
+            print("alert1 count : more than 1 person" + str(self.count_time_alert1))
+        self.count_person1 = 0
 
-        # 만약 이번 VideoCapture에서 사람이 2명 이상이라면, 시간에 추가
-        if self.count_person > 1:
-            self.count_time += 1
-        self.count_person = 0
-
-        # 만약 2명 이상 감지된 시간이 3초 이상이라면, capture
-        if self.count_time > 50:
+        if self.count_time_alert1 > 10:
             self.save_picture()
-            self.count_time = 0
+            self.show_alert_page_1.emit()
+            self.count_time_alert1 = 0
+
+        # alert2 : cellphone
+        if self.count_cellphone > 0:
+            self.count_time_alert2 += 1
+            print("alert2 count : cellphone" + str(self.count_time_alert2))
+        self.count_cellphone = 0
+
+        if self.count_time_alert2 > 10:
+            self.save_picture()
+            self.show_alert_page_2.emit()
+            self.count_time_alert2 = 0
+
+        #alert3 : no person
+        if self.count_time_alert3 > 10:
+            self.save_picture()
+            self.show_alert_page_3.emit()
+            self.count_time_alert3=0
+
+        #alert4 : no paper
+        if self.count_time_alert4 > 5:
+            self.save_picture()
+            self.show_alert_page_4.emit()
+            self.count_time_alert4=0
+
+
+
 
         #Pyqt Label에 bounding box포함해 전처리한 프레임 입력
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -141,7 +188,7 @@ class Exam_Page(QWidget):
     def retranslateUi(self, ExamForm):
         _translate = QtCore.QCoreApplication.translate
         ExamForm.setWindowTitle(_translate("ExamForm", "ExamPage"))
-        ExamForm.setWindowIcon(QIcon("UIsource/imgsource/img-symbol.png"))
+        ExamForm.setWindowIcon(QIcon("UI/imgsource/img-symbol.png"))
         self.ExitButton.setText(_translate("ExamForm", "시험 종료"))
 
     # function for switching page
@@ -158,19 +205,20 @@ class Exam_Page(QWidget):
             now = datetime.datetime.now()
             date = now.strftime('%Y%m%d')
             hour = now.strftime('%H%M%S')
-            filename = './images/Test_{}_{}_{}_{}.png'.format(self.SID, self.Name, date, hour)
+            # 웹캠 화면 캡쳐
+            filename = './images/Webcam_{}_{}_{}_{}.png'.format(self.SID, self.Name, date, hour)
 
             self.ko2Uni_save(filename, img)
             # self.imwrite(filename, img)
 
-            # 스크린 샷도 찍어서 저장
+            # 컴퓨터 화면스크린 샷도 찍어서 저장
             Screen_filename = './images/Screenshot_{}_{}_{}_{}.png'.format(self.SID, self.Name, date, hour)
             screen_img=ImageGrab.grab()
             screen_img.save(Screen_filename)
 
             # 카카오톡으로 부정행위가 의심되니 캡처된 사진을 확인해줄 것을 메세지로 전송
-            kakao = Kakaotalk()
-            kakao.send_message(self.SID, self.Name, date, hour)
+            #kakao = Kakaotalk()
+            #kakao.send_message(self.SID, self.Name, date, hour)
 
     def ko2Uni_save(self, filename, img):
         extension = os.path.splitext(filename)[1]
@@ -178,6 +226,7 @@ class Exam_Page(QWidget):
         if result:
             with open(filename, mode='w+b') as f:
                 n.tofile(f)
+
 
 
 

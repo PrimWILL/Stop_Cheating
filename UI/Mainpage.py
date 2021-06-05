@@ -7,7 +7,7 @@ import sys,datetime
 
 class Main_Page(QWidget):
     switch_window_to_webcam = QtCore.pyqtSignal()
-    switch_windows_to_exam = QtCore.pyqtSignal()
+    switch_window_to_notice = QtCore.pyqtSignal()
 
     def setupUi(self, MainForm):
         MainForm.setObjectName("MainForm")
@@ -74,7 +74,7 @@ class Main_Page(QWidget):
                                            "color : rgb(0, 0, 0);\n"
                                            "border-radius : 15px;")
         self.TestStartButton.setObjectName("TestStartButton")
-        self.TestStartButton.clicked.connect(self.switch_exam_page)
+        self.TestStartButton.clicked.connect(self.switch_notice_page)
 
         self.retranslateUi(MainForm)
         QtCore.QMetaObject.connectSlotsByName(MainForm)
@@ -83,7 +83,7 @@ class Main_Page(QWidget):
         self.backgroundlabel = QtWidgets.QLabel(MainForm)
         self.backgroundlabel.setGeometry(QtCore.QRect(0, 0, 621, 441))
         self.backgroundlabel.setText("")
-        self.backgroundlabel.setPixmap(QtGui.QPixmap("UIsource/imgsource/ajoumainpage.jpg"))
+        self.backgroundlabel.setPixmap(QtGui.QPixmap("UI/imgsource/ajoumainpage.jpg"))
         self.backgroundlabel.setScaledContents(True)
         self.backgroundlabel.setObjectName("backgroundlabel")
 
@@ -113,7 +113,7 @@ class Main_Page(QWidget):
 
     def retranslateUi(self, MainForm):
         _translate = QtCore.QCoreApplication.translate
-        MainForm.setWindowIcon(QIcon("UIsource/imgsource/img-symbol.png"))
+        MainForm.setWindowIcon(QIcon("UI/imgsource/img-symbol.png"))
         MainForm.setWindowTitle(_translate("MainForm", "MainPage"))
         self.label.setText(_translate("MainForm", "로그인 정보"))
         self.label_2.setText(_translate("MainForm", "학번 : " + self.SID))
@@ -125,8 +125,8 @@ class Main_Page(QWidget):
     def switch_webcam_page(self):
         self.switch_window_to_webcam.emit()
 
-    def switch_exam_page(self):
-        self.switch_windows_to_exam.emit()
+    def switch_notice_page(self):
+        self.switch_window_to_notice.emit()
 
     #function for updating current time for timer
     def timeout_run(self):

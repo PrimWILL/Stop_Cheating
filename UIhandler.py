@@ -1,11 +1,10 @@
-import cv2
-
 from UIsource.Loginpage import Login_Page
 from UIsource.Mainpage import Main_Page
 from UIsource.WebCamTest import Webcam_Page
 from UIsource.Exampage import Exam_Page
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+import cv2
 
 
 class UIHandler:

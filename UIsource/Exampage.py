@@ -1,8 +1,3 @@
-import cv2
-import os
-import sys
-import datetime
-import numpy as np
 from PySide2.QtCore import QTimer
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QThread
@@ -10,6 +5,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from kakaotalk.kakao import Kakaotalk
 from PIL import ImageGrab
+import cv2
+import os
+import sys
+import datetime
+import numpy as np
 import qimage2ndarray
 
 class Exam_Page(QWidget):
@@ -80,7 +80,6 @@ class Exam_Page(QWidget):
         self.count_person = 0
 
         # 만약 2명 이상 감지된 시간이 3초 이상이라면, capture
-        # 근데 한 frame의 갱신 시간이 얼마인지 모르겠다... 여쭤보고 수정 필요
         if self.count_time > 50:
             self.save_picture()
             self.count_time = 0
@@ -106,7 +105,7 @@ class Exam_Page(QWidget):
         #Yolo framework
         self.YOLO_net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
         self.classes = []
-        with open("coco.names", "r") as f:
+        with open("cheating.names", "r") as f:
             self.classes = [line.strip() for line in f.readlines()]
         self.layer_names = self.YOLO_net.getLayerNames()
         self.output_layers = [self.layer_names[i[0] - 1] for i in self.YOLO_net.getUnconnectedOutLayers()]
@@ -152,6 +151,7 @@ class Exam_Page(QWidget):
         self.switch_window_to_main.emit()
 
     #function for save picture to folder ./images
+    #웹캠 화면과 컴퓨터 화면 스크린샷 찍어서 ./images폴더에 저장
     def save_picture(self):
         ret, img = self.VideoSignal.read()
         if ret:
@@ -178,14 +178,6 @@ class Exam_Page(QWidget):
         if result:
             with open(filename, mode='w+b') as f:
                 n.tofile(f)
-
-    # 키 입력 이벤트를 받아 사진 저장하는 임시 함수. 조건 구현 되면 CheatingDetected으로 이동
-    def keyPressEvent(self, e):
-        print(1)
-        if e.key() == Qt.Key_Q:
-            self.save_picture()
-
-
 
 
 

@@ -1,11 +1,11 @@
-import cv2
-import sys
-import numpy as np
 from PySide2.QtCore import QTimer
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import qimage2ndarray
+import cv2
+import sys
+import numpy as np
 
 
 

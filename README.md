@@ -61,7 +61,7 @@ to be added soon
 
 ----------------------------------------------------
 
-## How to use COCO dataset
+## :memo: How to use COCO dataset
 
 1. Download COCO dataset   
 : You can download COCO dataset in [here](https://cocodataset.org/#download).
@@ -80,7 +80,7 @@ $ java -jar cocotoyolo.jar "coco/annotations/instances_train2017.json" "/usr/hom
 $ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/madmax/coco/images/val2017/" "car,truck,bus" "coco/yolo"
 ```
 
-## How to install Yolo Mark
+## :wrench: How to install Yolo Mark
 1. Download labeling tool.  
 : If you want to use custom dataset, you should mark bounded boxes of the object in your custom image. There's [Yolo Mark](https://github.com/AlexeyAB/Yolo_mark) which is marking bounded boxes of objects in images for training Yolo v3 and v2.  
 
@@ -97,7 +97,7 @@ $ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/
 : If you built project successfully, then execute `yolo_mark.cmd` in `Yolo_mark -> x64 -> Release` folder.  
 
 
-## How to make custom Yolo dataset  
+## :hammer: How to make custom Yolo dataset  
 1. Change working directory  
 : First, you change your working directory into `Yolo_mark -> x64 -> Release -> data -> img`.  
 
@@ -121,10 +121,12 @@ $ java -jar cocotoyolo.jar "coco/annotations/instances_val2017.json" "/usr/home/
 
 <br/>
 
+------------------------
 
 ## 자료 모음
 * [YOLO](https://pjreddie.com/darknet/yolo/) : 여기에서 yolo 여러 버전의 모델과 weights를 다운받을 수 있음.  
-
+* [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf) : YOLO 창시자인 Josepth Redmon의 논문
+* [YOLOv3: An Incremental Improvement](https://arxiv.org/pdf/1804.02767.pdf) : YOLO 창시자인 Joseph Redmon의 YOLOv3에 관한 논문
 
 * [[YOLO] Python과 OpenCV를 이용한 실시간 객체 탐지 알고리즘 구현](https://deep-eye.tistory.com/6)
 * [Python으로 OpenCV를 사용하여 YOLO Object detection](https://bong-sik.tistory.com/16)

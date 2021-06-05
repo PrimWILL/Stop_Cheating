@@ -1,4 +1,3 @@
-import Controller
 from UIhandler import UIHandler
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -9,6 +8,5 @@ uihandler = UIHandler()
 uihandler.show_login_page()
 sys.exit(app.exec_())
 
-#ctrl = Controller.control()
-#ctrl.object_detector()
+
 

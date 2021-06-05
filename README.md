@@ -3,33 +3,62 @@
 <br/>
 
 ## :loudspeaker: 프로젝트 소개
-비대면 시험 중 컨닝 문제를 해결하기 위해 실시간 영상처리를 통해 부정행위를 검출하는 시스템입니다.
+비대면 시험 중 컨닝 문제를 해결하기 위해 웹캠에서 실시간으로 영상을 받아와 부정행위를 검출하는 시스템입니다.
+딥러닝 기반 프레임워크인 YOLO를 적용하여 Object Detection 과정을 통해 부정행위를 검출합니다.
 
 ## :wrench: Features
-1. 실시간 영상 처리를 통한 부정행위 검출
+### 부정행위 검출
+>웹캠으로부터 입력을 받아 시스템이 부정행위 여부를 판별하여 알림메세지를 출력합니다  
+부정행위로 판별되는 경우는 다음과 같습니다.
+>1.  2명 이상의 사람이 같이 있는 경우  
+   <br/>
+>2.  
+   <br/>
 
 
-2.
+### 캠 및 화면 캡쳐 기능
+>시스템이 부정행위를 판별한 경우, 사용자의 컴퓨터 화면 및 웹캠 화면을 캡쳐하여 images 폴더에 저장합니다. 
+<br/>
+
+### 카카오톡 알림 기능
+>시스템이 부정행위를 판별한 경우, 카카오톡 메세지로 알림을 보냅니다.
+<br/>
 
 
-3.
-
+## :camera: Screenshot
+to be added soon
 
 
 ## :books: Techs
 
   ### [OpenCV - Python](https://github.com/opencv/opencv)
-  - 실시간 영상 처리 및 입출력를 위해서 OpenCV Python 라이브러리를 사용하였습니다.
+  - 실시간 영상 처리 및 입출력을 위해서 OpenCV Python 라이브러리를 사용하였습니다.
   ### [Yolo v3](https://github.com/ultralytics/yolov3) 
   - 핵심 기능인 Object Detection의 정확도를 위해서 딥러닝 프레임워크인 Yolo v3을 채용하였습니다. 
   - 호환성 및 성능(속도, 정확도), 안정성을 고려하여 v3버전을 사용하였고, 커스텀 모델 학습을 통해 성능 향상 및 핵심 기능을 구현하였습니다.
   ### [PyQT5](https://pypi.org/project/PyQt5/) 
   - OpenCV 라이브러리와의 호환성을 고려하여 핵심 UI 구현 프레임워크로 PyQT5를 사용하였습니다.
+  ### [Kakao API](https://developers.kakao.com/)
+  - 부정행위 검출 시 카카오톡을 통한 알림 기능을 구현하기 위해 Kakao API를 사용하였습니다.
+
+## :triangular_flag_on_post: 실행 방법
+### :rotating_light:웹캠이 있는 기기에서만 실행 가능합니다:rotating_light:
+* COCO Pretrained Dataset을 이용한 테스트 방법  
+[YOLO](https://pjreddie.com/darknet/yolo/) : 여기에서 원하는 버전의 weight 파일, cfg 파일, coco.names파일 다운로드 후 프로젝트 폴더에 추가   
+  ```
+  yolov3.weight  yolov3.cfg  coco.names
+  ```
+* Custom Dataset을 이용한 방법  
+커스텀 학습을 통해 생성된 weight파일과 .cfg파일 프로젝트 폴더에 추가
+  ```
+  yolov3.weight  yolov3.cfg
+  ```
+
 ## :two_men_holding_hands: Members
 
-[@PrimWILL](https://github.com/PrimWILL)  
-[@Myungkwan Ok](https://github.com/canonn11)  
-[@donghyun1208](https://github.com/donghyun1208)
+박지윤 [@PrimWILL](https://github.com/PrimWILL)  
+옥명관 [@canonn11](https://github.com/canonn11)  
+김동현 [@donghyun1208](https://github.com/donghyun1208)
 
 ----------------------------------------------------
 

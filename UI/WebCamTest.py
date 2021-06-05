@@ -64,7 +64,7 @@ class Webcam_Page(QWidget):
         #label for camera image
         self.camlabel = QtWidgets.QLabel(WebcamForm)
         self.camlabel.setGeometry(QtCore.QRect(-7, 1, 621, 381))
-        self.camlabel.setPixmap(QtGui.QPixmap("UIsource/imgsource/cam.jpg"))
+        self.camlabel.setPixmap(QtGui.QPixmap("UI/imgsource/cam.jpg"))
         self.camlabel.setScaledContents(True)
         self.camlabel.setObjectName("label")
 
@@ -74,7 +74,7 @@ class Webcam_Page(QWidget):
     def retranslateUi(self, WebcamForm):
         _translate = QtCore.QCoreApplication.translate
         WebcamForm.setWindowTitle(_translate("WebcamForm", "WebcamTest"))
-        WebcamForm.setWindowIcon(QIcon("UIsource/imgsource/img-symbol.png"))
+        WebcamForm.setWindowIcon(QIcon("UI/imgsource/img-symbol.png"))
         self.pushButton.setText(_translate("WebcamForm", "뒤로가기"))
         self.pushButton_2.setText(_translate("WebcamForm", "카메라 켜기"))
 

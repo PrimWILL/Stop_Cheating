@@ -71,7 +71,7 @@ class Login_Page(QWidget):
         self.label = QtWidgets.QLabel(LoginForm)
         self.label.setGeometry(QtCore.QRect(0, 0, 621, 441))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("UIsource/imgsource/loginpage.jpg"))
+        self.label.setPixmap(QtGui.QPixmap("UI/imgsource/loginpage.jpg"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
 
@@ -89,7 +89,7 @@ class Login_Page(QWidget):
     def retranslateUi(self, LoginForm):
         _translate = QtCore.QCoreApplication.translate
         LoginForm.setWindowTitle(_translate("LoginForm", "LoginPage"))
-        LoginForm.setWindowIcon(QIcon("UIsource/imgsource/img-symbol.png"))
+        LoginForm.setWindowIcon(QIcon("UI/imgsource/img-symbol.png"))
         self.LoginButton.setText(_translate("LoginForm", "Login"))
         self.SIDLabel.setText(_translate("LoginForm", "학번"))
         self.NameLabel.setText(_translate("LoginForm", "이름"))

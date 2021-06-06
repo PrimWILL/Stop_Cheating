@@ -1,4 +1,7 @@
-with open(r"C:\Users\user\Desktop\PythonWorkspace\kakao_test\kakao_code.json","r") as fp:
+import json
+import requests
+
+with open("kakao_code.json","r") as fp:
     tokens = json.load(fp)
 # print(tokens)
 # print(tokens["access_token"])

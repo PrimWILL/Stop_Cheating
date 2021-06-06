@@ -229,8 +229,8 @@ class Exam_Page(QWidget):
             screen_img.save(Screen_filename)
 
             # 카카오톡으로 부정행위가 의심되니 캡처된 사진을 확인해줄 것을 메세지로 전송
-            # kakao = Kakaotalk()
-            # kakao.send_message(self.SID, self.Name, date, hour, cheating_code)
+            kakao = Kakaotalk()
+            kakao.send_message(self.SID, self.Name, date, hour, cheating_code)
 
     def ko2Uni_save(self, filename, img):
         extension = os.path.splitext(filename)[1]

@@ -8,6 +8,16 @@ class Kakaotalk():
         with open("kakaotalk/kakao_code.json", "r") as fp:
             tokens = json.load(fp)
 
+        friend_url = "https://kapi.kakao.com/v1/api/talk/friends"
+        headers = {
+            "Authorization": "Bearer " + tokens["access_token"]
+        }
+        result = json.loads(requests.get(friend_url, headers=headers).text)
+
+        friends_list = result.get("elements")
+        friend_id = friends_list[0].get("uuid")
+        send_url = "https://kapi.kakao.com/v1/api/talk/friends/message/default/send"
+
         cheat_string = ""
 
         if cheating_code == 1:
@@ -19,15 +29,12 @@ class Kakaotalk():
         elif cheating_code == 4:
             cheat_string = "시험지,답안지 미포착"
 
-        url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
-        headers = {
-            "Authorization": "Bearer " + tokens["access_token"]
-        }
 
         cheating_message = "{0} {1} 학생의 부정행위가 의심됩니다. 확인부탁드립니다. / 일시: {2}_{3} / 사유: {4}".format(a, b, date, hour, cheat_string)
 
         data = {
+            "receiver_uuids": '["{}"]'.format(friend_id),
             "template_object": json.dumps({
                 "object_type": "text",
                 "text": cheating_message,
@@ -37,5 +44,5 @@ class Kakaotalk():
             })
         }
 
-        response = requests.post(url, headers=headers, data=data)
+        response = requests.post(send_url, headers=headers, data=data)
         print("Response Status Code: {0}".format(response.status_code))

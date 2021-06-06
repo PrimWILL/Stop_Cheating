@@ -32,6 +32,7 @@
 <img src="./UI/imgsource/Screenshot-01.JPG">
 <img src="./UI/imgsource/Screenshot-02.JPG">
 <img src="./UI/imgsource/kakaotalkMessage.JPG">
+<img src="./UI/imgsource/kakao_message_supervisor.PNG" height = "600px">
 
 ## :books: Techs
 

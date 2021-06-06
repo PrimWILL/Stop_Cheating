@@ -37,8 +37,8 @@
 
   ### [OpenCV - Python](https://github.com/opencv/opencv)
   - 실시간 영상 처리 및 입출력을 위해서 OpenCV Python 라이브러리를 사용하였습니다.
-  ### [Yolo v3](https://github.com/ultralytics/yolov3) 
-  - 핵심 기능인 Object Detection의 정확도를 위해서 딥러닝 프레임워크인 Yolo v3을 채용하였습니다. 
+  ### [Yolo v3 - Python](https://github.com/ultralytics/yolov3) 
+  - 핵심 기능인 Object Detection의 정확도를 위해서 딥러닝 프레임워크인 Yolo v3 Darknet을 채용하였습니다. 
   - 호환성 및 성능(속도, 정확도), 안정성을 고려하여 v3버전을 사용하였고, 커스텀 모델 학습을 통해 성능 향상 및 핵심 기능을 구현하였습니다.
     - [YOLO](https://pjreddie.com/darknet/yolo/) : darknet 기반 yolo 각 버젼의 cfg파일과 weights를 다운받을 수 있습니다.
     - [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf) : YOLO 창시자인 Josepth Redmon의 YOLO에 관한 논문입니다.
